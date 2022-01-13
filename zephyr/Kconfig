@@ -1,0 +1,23 @@
+menuconfig LIBCOSE
+    bool "libcose Support"
+    select NANOCBOR
+    help
+        This options enables the libcose library.
+
+if LIBCOSE
+
+choice CRYPTO
+    prompt "select crypto library that libcose will use"
+
+config LIBCOSE_CRYPTO_TINYCRYPT
+    bool "use Tinycrpyt"
+    select TINYCRYPT
+    select TINYCRYPT_AES
+    select TINYCRYPT_ECC_DH
+    select TINYCRYPT_ECC_DSA
+    select TINYCRYPT_AES_CCM
+    select TINYCRYPT_SHA256
+
+endchoice
+
+endif # LIBCOSE

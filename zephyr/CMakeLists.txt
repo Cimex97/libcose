@@ -1,0 +1,17 @@
+if(CONFIG_LIBCOSE)
+    zephyr_include_directories(../include/)
+    zephyr_sources(../src/cose_common.c)
+    zephyr_sources(../src/cose_crypto.c)
+    zephyr_sources(../src/cose_encrypt.c)
+    zephyr_sources(../src/cose_hdr.c)
+    zephyr_sources(../src/cose_key.c)
+    zephyr_sources(../src/cose_recipient.c)
+    zephyr_sources(../src/cose_signature.c)
+    zephyr_sources(../src/cose_sign.c)
+
+if(CONFIG_LIBCOSE_CRYPTO_TINYCRYPT)
+    zephyr_sources(../src/crypt/tinycrypt.c)
+    zephyr_library_compile_definitions(HAVE_ALGO_ECDSA)
+endif()
+
+endif()
